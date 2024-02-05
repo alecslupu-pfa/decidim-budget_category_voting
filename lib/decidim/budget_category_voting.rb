@@ -3,7 +3,6 @@
 require "decidim/budget_category_voting/admin"
 require "decidim/budget_category_voting/engine"
 require "decidim/budget_category_voting/admin_engine"
-require "decidim/budget_category_voting/component"
 
 module Decidim
   # This namespace holds the logic of the `BudgetCategoryVoting` component. This component
