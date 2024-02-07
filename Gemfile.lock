@@ -1,11 +1,3 @@
-PATH
-  remote: .
-  specs:
-    decidim-budget_category_voting (0.27.5)
-      decidim-admin (= 0.27.5)
-      decidim-budgets (= 0.27.5)
-      decidim-core (= 0.27.5)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -821,7 +813,6 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   decidim (~> 0.27)
-  decidim-budget_category_voting!
   decidim-dev (~> 0.27)
   faker
   letter_opener_web (~> 1.3)

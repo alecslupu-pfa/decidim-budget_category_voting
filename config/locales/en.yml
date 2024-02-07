@@ -1,3 +1,22 @@
 ---
 en:
   decidim:
+    budget_category_voting:
+      admin:
+        settings:
+          vote_category_voting:
+            add: "Add"
+          category:
+            up: "Up"
+            down: "Down"
+            remove: "Remove"
+    components:
+      budgets:
+        settings:
+          global:
+            vote_rule_category_voting_enabled: "Enable rule: Voting by category"
+            workflow_choices:
+              category: Category
+      budget_category_voting:
+        name: BudgetCategoryVoting
+
