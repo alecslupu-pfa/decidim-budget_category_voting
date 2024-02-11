@@ -26,6 +26,7 @@ module Decidim
       initializer "decidim_budget_category_voting.patch_engine" do
         config.to_prepare do
           Decidim::Admin::SettingsHelper.prepend(Decidim::BudgetCategoryVoting::Overrides::SettingsHelper)
+          Decidim::Budgets::Admin::ComponentForm.include(Decidim::BudgetCategoryVoting::Overrides::ComponentForm)
         end
 
         Decidim.find_component_manifest(:budgets).settings(:global) do |settings|

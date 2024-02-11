@@ -1,5 +1,6 @@
 ---
 en:
+
   decidim:
     budget_category_voting:
       admin:
@@ -14,6 +15,7 @@ en:
       budgets:
         settings:
           global:
+            vote_category_voting: "Enable category voting"
             vote_rule_category_voting_enabled: "Enable rule: Voting by category"
             workflow_choices:
               category: Category

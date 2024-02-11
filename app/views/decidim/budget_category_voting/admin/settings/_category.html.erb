@@ -3,7 +3,7 @@
     <h2 class="card-title">
       <span><%== icon("move") %></span>
 <!--      <span><%#= t(".category") %></span>-->
-      <span> Category </span>
+      <span><%= translated_attribute(form.object.name)%></span>
 
       <button class="button small alert hollow move-up-question button--title">
         <%== "#{icon("arrow-top")} #{t(".up")}" %>
@@ -22,11 +22,12 @@
   <div class="card-section">
     <div class="grid-x">
       <div class="cell auto">
-        <%= translated_attribute(form.object.name)%>
+        <%= form.text_field :value %>
       </div>
+      <%= form.color_field :color %>
     </div>
-    <%#= form.hidden_field :id %>
-    <%#= form.hidden_field :position, value: form.object.position || 0 %>
-    <%#= form.hidden_field :deleted %>
+    <%= form.hidden_field :id %>
+    <%= form.hidden_field :position, value: form.object.position || 0 %>
+    <%= form.hidden_field :deleted %>
   </div>
 </div>

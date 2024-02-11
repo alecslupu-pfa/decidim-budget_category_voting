@@ -1,13 +1,12 @@
 <div class="external-domains">
   <div class="external-domains-list">
-    <% current_participatory_space.categories.each do |category| %>
-      <%= fields_for "category_id[]", category do |category_form| %>
-        <%= render "decidim/budget_category_voting/admin/settings/category",
-                   form: category_form,
-                   id: category.id %>
+    <% @form.vote_category_voting.each do |category| %>
+      <%= fields_for "component[settings][vote_category_voting][]", category do |category_form| %>
+      <%= render "decidim/budget_category_voting/admin/settings/category",
+               form: category_form,
+               id: category.id
+      %>
       <% end %>
     <% end %>
   </div>
-
-  <button class="button small hollow add-external-domain"><%= t(".add") %></button>
 </div>
