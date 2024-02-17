@@ -1,5 +1,5 @@
-<div class="card external-domain" id="<%= id %>-field">
-  <div class="card-divider external-domain-divider">
+<div class="card budget-category-voting" id="<%= id %>-field">
+  <div class="card-divider budget-category-voting-divider">
     <h2 class="card-title">
       <span><%== icon("move") %></span>
 <!--      <span><%#= t(".category") %></span>-->
@@ -13,20 +13,39 @@
         <%== "#{icon("arrow-bottom")} #{t(".down")}" %>
       </button>
 
-      <button class="button small alert hollow remove-external-domain button--title">
+      <button class="button small alert hollow remove-budget-category-voting button--title">
         <%= t(".remove") %>
       </button>
     </h2>
   </div>
 
   <div class="card-section">
-    <div class="grid-x">
-      <div class="cell auto">
-        <%= form.text_field :value %>
+    <div class="row columns">
+      <div class="column-9">
+        <%= form.categories_select :decidim_category_id, current_participatory_space.categories, include_blank: "", disable_parents: false%>
       </div>
-      <%= form.color_field :color %>
+      <div class="column-3">
+        <%= form.color_field :color %>
+      </div>
     </div>
-    <%= form.hidden_field :id %>
+    <div class="row">
+      <%= form.select :criteria,
+                      form.object.criteria_select,
+                      { include_blank: "" },
+                      { multiple: false, class: "budget-category-criteria"  } %>
+    </div>
+    <div class="row" data-toggle-field data-toggle="vote_rule_threshold_percent_enabled">
+      <%= form.text_field :percentage %>
+    </div>
+    <div class="row" data-toggle-field data-toggle="vote_rule_minimum_budget_projects_enabled">
+      <%= form.text_field :projects_number %>
+    </div>
+    <div class="row" data-toggle-field data-toggle="vote_rule_selected_projects_enabled">
+      <%= form.text_field :minimum %>
+    </div>
+    <div class="row" data-toggle-field data-toggle="vote_rule_selected_projects_enabled">
+      <%= form.text_field :maximum %>
+    </div>
     <%= form.hidden_field :position, value: form.object.position || 0 %>
     <%= form.hidden_field :deleted %>
   </div>

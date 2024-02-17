@@ -68,11 +68,15 @@ module Decidim::BudgetCategoryVoting::Overrides::ComponentForm
 
   included do
     attribute :vote_category_voting, Array[Decidim::BudgetCategoryVoting::Admin::CategoryForm]
+    attribute :blank_vote_category_voting, Decidim::BudgetCategoryVoting::Admin::CategoryForm
 
     validate :vote_category_voting
     validate :budget_voting_rule_category_value_setting
+
     def map_model(model)
       super(model)
+
+      self.blank_vote_category_voting = Decidim::BudgetCategoryVoting::Admin::CategoryForm.new
 
       self.vote_category_voting = avaliable_categories(model).each do |category|
         Decidim::BudgetCategoryVoting::Admin::CategoryForm.new(category)
@@ -90,7 +94,7 @@ module Decidim::BudgetCategoryVoting::Overrides::ComponentForm
         end
       end
 
-      model.participatory_space.categories.each do |a|
+      model.participatory_space.categories.where(id: @avaliable_categories.keys).each do |a|
         @avaliable_categories[a.id.to_s] ||= {}
         @avaliable_categories[a.id.to_s].merge!("name" => a.name)
       end

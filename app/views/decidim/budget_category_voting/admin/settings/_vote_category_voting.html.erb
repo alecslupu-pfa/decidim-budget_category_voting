@@ -1,5 +1,12 @@
-<div class="external-domains">
-  <div class="external-domains-list">
+<div class="budget-category-votings">
+  <%= fields_for "component[settings][vote_category_voting][blank_vote_category_voting]", @form.blank_vote_category_voting do |category_form| %>
+    <script type="text/template" class="decidim-template">
+      <%= render "decidim/budget_category_voting/admin/settings/category",
+                 form: category_form,
+                 id: :blank_vote_category_voting %>
+    </script>
+  <% end %>
+  <div class="budget-category-votings-list" id="decidim-budget-category-voting">
     <% @form.vote_category_voting.each do |category| %>
       <%= fields_for "component[settings][vote_category_voting][]", category do |category_form| %>
       <%= render "decidim/budget_category_voting/admin/settings/category",
@@ -9,4 +16,8 @@
       <% end %>
     <% end %>
   </div>
+  <button class="button small hollow add-budget-category-voting"><%= t(".add") %></button>
+
 </div>
+
+<%= javascript_pack_tag "decidim_budget_category_voting_admin", defer: false %>
