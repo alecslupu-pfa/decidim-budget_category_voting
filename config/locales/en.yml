@@ -1,3 +1,6 @@
 ---
 en:
   decidim:
+    components:
+      budget_category_voting:
+        name: BudgetCategoryVoting

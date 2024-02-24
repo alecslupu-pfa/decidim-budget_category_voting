@@ -15,7 +15,13 @@ module Decidim
         # root to: "budget_category_voting#index"
       end
 
-      initializer "BudgetCategoryVoting.webpacker.assets_path" do
+      initializer "budget_category_voting.views" do
+        Rails.application.configure do
+          config.deface.enabled = Decidim::CategoryEnhanced.deface_enabled
+        end
+      end
+
+      initializer "budget_category_voting.webpacker.assets_path" do
         Decidim.register_assets_path File.expand_path("app/packs", root)
       end
     end
