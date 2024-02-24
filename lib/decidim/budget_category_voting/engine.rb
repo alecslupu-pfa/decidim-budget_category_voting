@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rails"
+require "deface"
 require "decidim/core"
 
 module Decidim
@@ -17,7 +18,7 @@ module Decidim
 
       initializer "budget_category_voting.views" do
         Rails.application.configure do
-          config.deface.enabled = Decidim::CategoryEnhanced.deface_enabled
+          config.deface.enabled = Decidim::BudgetCategoryVoting.deface_enabled
         end
       end
 
