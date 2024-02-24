@@ -12,6 +12,8 @@ module Decidim
     module Overrides
       autoload :SettingsHelper, "decidim/budget_category_voting/overrides/settings_helper"
       autoload :ComponentForm, "decidim/budget_category_voting/overrides/component_form"
+      autoload :ProjectsHelper, "decidim/budget_category_voting/overrides/projects_helper"
+      autoload :Order, "decidim/budget_category_voting/overrides/order"
     end
   end
 end

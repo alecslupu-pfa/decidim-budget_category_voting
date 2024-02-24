@@ -27,6 +27,13 @@ module Decidim
         config.to_prepare do
           Decidim::Admin::SettingsHelper.prepend(Decidim::BudgetCategoryVoting::Overrides::SettingsHelper)
           Decidim::Budgets::Admin::ComponentForm.include(Decidim::BudgetCategoryVoting::Overrides::ComponentForm)
+          Decidim::Budgets::Order.include(Decidim::BudgetCategoryVoting::Overrides::Order)
+
+          ActiveSupport.on_load :action_controller do
+            Decidim::Budgets::ProjectsHelper.module_eval do
+              prepend Decidim::BudgetCategoryVoting::Overrides::ProjectsHelper
+            end
+          end
         end
 
         Decidim.find_component_manifest(:budgets).settings(:global) do |settings|

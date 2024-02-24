@@ -25,7 +25,7 @@ module Decidim
                  :budget_voting_rule_projects_value_setting, unless: :deleted
 
         def to_param
-          return id if id.present?
+          return decidim_category_id if decidim_category_id.present?
 
           "category-id"
         end

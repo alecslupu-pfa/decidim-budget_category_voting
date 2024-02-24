@@ -90,7 +90,7 @@ module Decidim::BudgetCategoryVoting::Overrides::ComponentForm
 
       if model.settings.vote_category_voting.present?
         model.settings.vote_category_voting.each do |category|
-          @avaliable_categories[category["id"]] = category
+          @avaliable_categories[category["decidim_category_id"]] = category
         end
       end
 
