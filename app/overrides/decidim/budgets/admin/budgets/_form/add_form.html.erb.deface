@@ -1,0 +1,2 @@
+<!-- insert_after 'div.row[1]' -->
+<%= render "decidim/budget_category_voting/admin/form", form: form %>

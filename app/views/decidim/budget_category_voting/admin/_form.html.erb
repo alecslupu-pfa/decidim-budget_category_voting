@@ -1,0 +1,27 @@
+<div class="row column">
+  <% if form.send(:error?, :category_budget_rules) %>
+    <div class="input-field">
+      <div>&nbsp;</div>
+      <%= form.send(:error_and_help_text, :category_budget_rules) %>
+    </div>
+  <% end %>
+
+  <div class="category-bugdet-rules">
+    <%= fields_for "category_budget_rules[#{blank_category_budget_rule.to_param}]", blank_category_budget_rule do |rule_form| %>
+      <script type="text/template" class="decidim-template">
+        <%= render "decidim/budget_category_voting/admin/category_budget_rule_fields", form: rule_form, id: blank_category_budget_rule.to_param %>
+      </script>
+    <% end %>
+
+    <div class="category-bugdet-rules-list">
+      <% @form.category_budget_rules.each do |rule| %>
+        <%= fields_for "category_budget_rules[]", rule do |rule_form| %>
+          <%= render "decidim/budget_category_voting/admin/category_budget_rule_fields", form: rule_form, id: rule.to_param %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <button class="button small hollow add-category-bugdet-rule"><%= t(".add") %></button>
+  </div>
+</div>
+<%= javascript_pack_tag "decidim_budget_category_voting_admin", defer: false %>
