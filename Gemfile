@@ -4,6 +4,8 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
+gem "uri", "0.10.1"
+
 gem "decidim", "~> 0.27"
 gem "decidim-budget_category_voting", path: "."
 
