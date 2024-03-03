@@ -18,7 +18,7 @@ module Decidim
             }
 
             @budget = Decidim.traceability.create!(
-              Budget,
+              Decidim::Budgets::Budget,
               form.current_user,
               attributes,
               visibility: "all"

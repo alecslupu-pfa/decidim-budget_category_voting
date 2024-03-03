@@ -17,6 +17,9 @@ en:
               invalid: "Invalid category budget rules. Please review the rules."
   decidim:
     budget_category_voting:
+      rule:
+        remaining_votes: "Remaining votes"
+        remaining_percentage: "Remaining percentage"
       admin:
         category_budget_rule_fields:
           category: "Category"
