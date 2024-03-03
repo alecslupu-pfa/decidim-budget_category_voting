@@ -26,6 +26,19 @@ module Decidim
         delegate :categories, to: :current_participatory_space
         delegate :settings, to: :current_component
 
+        def attributes
+          selected_fields = [:position, :decidim_category_id]
+          if settings.vote_rule_threshold_percent_enabled
+            selected_fields.push(:vote_threshold_percent)
+          elsif settings.vote_rule_minimum_budget_projects_enabled
+            selected_fields.push(:vote_minimum_budget_projects_number)
+          elsif settings.vote_rule_selected_projects_enabled
+            selected_fields.push(:vote_selected_projects_minimum , :vote_selected_projects_maximum)
+          end
+
+          super.slice(*selected_fields)
+        end
+
         def category
           return unless current_participatory_space
 
