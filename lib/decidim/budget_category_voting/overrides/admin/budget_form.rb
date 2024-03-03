@@ -15,7 +15,6 @@ module Decidim
 
               protected
               delegate :settings, to: :current_component
-
             end
           end
         end
