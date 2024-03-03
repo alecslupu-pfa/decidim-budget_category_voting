@@ -13,24 +13,14 @@ FactoryBot.define do
       category_budget_rules do
         [
           position: 0,
-          decidim_category_id: create(:category).id,
+          decidim_category_id: create(:category, participatory_space: component.participatory_space).id,
           vote_threshold_percent: 20
         ]
       end
     end
 
     trait :with_minimum_budget_projects do
-      transient do
-        selected { 2 }
-      end
       component { create(:budgets_component, :with_minimum_budget_projects) }
-      category_budget_rules do
-        [
-          position: 0,
-          decidim_category_id: create(:category).id,
-          vote_minimum_budget_projects_number: selected
-        ]
-      end
     end
 
     trait :with_budget_projects_range do
@@ -42,7 +32,7 @@ FactoryBot.define do
       category_budget_rules do
         [
           position: 0,
-          decidim_category_id: create(:category).id,
+          decidim_category_id: create(:category, participatory_space: component.participatory_space).id,
           vote_selected_projects_minimum: min,
           vote_selected_projects_maximum: max
         ]
