@@ -5,6 +5,7 @@ module Decidim
     module Overrides
       module Admin
         module CreateBudget
+
           def create_budget!
             attributes = {
               component: form.current_component,

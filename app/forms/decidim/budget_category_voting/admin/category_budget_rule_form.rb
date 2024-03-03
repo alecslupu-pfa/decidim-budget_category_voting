@@ -33,7 +33,7 @@ module Decidim
           elsif settings.vote_rule_minimum_budget_projects_enabled
             selected_fields.push(:vote_minimum_budget_projects_number)
           elsif settings.vote_rule_selected_projects_enabled
-            selected_fields.push(:vote_selected_projects_minimum, :vote_selected_projects_maximum)
+            selected_fields.push(:vote_selected_projects_minimum , :vote_selected_projects_maximum)
           end
 
           super.slice(*selected_fields)
@@ -76,6 +76,7 @@ module Decidim
           budget_voting_projects_value_setting_max
           budget_voting_projects_value_setting_both
         end
+
 
         def budget_voting_projects_value_setting_min
           return if settings.vote_selected_projects_minimum.present? && settings.vote_selected_projects_minimum.to_i >= 0

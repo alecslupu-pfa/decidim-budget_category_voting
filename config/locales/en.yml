@@ -1,31 +1,31 @@
 ---
 en:
+
   activemodel:
     errors:
       models:
-        budget:
-          attributes:
-            category_budget_rules:
-              invalid: Invalid category budget rules. Please review the rules.
         form:
           attributes:
             category_budget_rules:
-              minimum_budget_projects_number_too_high: The minimum number of projects
-                is too high.
-              minimum_budget_projects_number_too_low: The minimum number of projects
-                is too low.
-              percent_number_too_high: The computed percentage is too high.
-              percent_number_too_low: The percentage is too low.
+              percent_number_too_high: "The computed percentage is too high."
+              percent_number_too_low: "The percentage is too low."
+              minimum_budget_projects_number_too_low: "The minimum number of projects is too low."
+              minimum_budget_projects_number_too_high: "The minimum number of projects is too high."
+        budget:
+          attributes:
+            category_budget_rules:
+              invalid: "Invalid category budget rules. Please review the rules."
   decidim:
     budget_category_voting:
       admin:
         category_budget_rule_fields:
-          category: Category
-          down: Down
-          remove: Remove
-          up: Up
+          category: "Category"
+          remove: "Remove"
+          up: "Up"
+          down: "Down"
+
         form:
-          add: Add
+          add: "Add"
     components:
       budget_category_voting:
         name: BudgetCategoryVoting
