@@ -22,8 +22,7 @@ describe "Orders", type: :system do
     [
       { position: 0,
         decidim_category_id: category.id,
-        vote_minimum_budget_projects_number: minimum_to_select
-      }
+        vote_minimum_budget_projects_number: minimum_to_select }
     ]
   end
   let(:budget) { create :budget_category_voting, :with_minimum_budget_projects, component: component, category_budget_rules: category_budget_rules }
@@ -118,7 +117,6 @@ describe "Orders", type: :system do
         end
       end
     end
-
 
     # context "and has pending order" do
     #   let!(:order) { create(:order, user: user, budget: budget) }
