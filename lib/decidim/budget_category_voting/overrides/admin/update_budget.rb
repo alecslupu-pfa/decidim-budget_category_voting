@@ -5,7 +5,6 @@ module Decidim
     module Overrides
       module Admin
         module UpdateBudget
-
           def update_budget!
             attributes = {
               scope: form.scope,
