@@ -45,7 +45,7 @@ module Decidim
         end
       end
 
-      initializer "budget_category_voting.add_cells_view_paths" do
+      initializer "budget_category_voting.add_cells_view_paths", after: "decidim_budgets.add_cells_view_paths" do
         Cell::ViewModel.view_paths << File.expand_path("#{Decidim::BudgetCategoryVoting::Engine.root}/app/cells")
         Cell::ViewModel.view_paths << File.expand_path("#{Decidim::BudgetCategoryVoting::Engine.root}/app/views") # for partials
       end

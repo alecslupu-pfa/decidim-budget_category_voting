@@ -4,7 +4,7 @@ module Decidim
   module BudgetCategoryVoting
     class RuleCell < Decidim::ViewModel
       def show
-        render
+        render if model.present?
       end
 
       protected

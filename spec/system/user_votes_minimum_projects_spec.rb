@@ -10,12 +10,13 @@ describe "Orders", type: :system do
   let!(:user) { create :user, :confirmed, organization: organization }
   let(:project) { projects.first }
 
+  let(:vote_minimum_budget_projects_number) { 2 }
   let!(:component) do
     create(:budgets_component,
            :with_minimum_budget_projects,
            manifest: manifest,
            participatory_space: participatory_process,
-           vote_minimum_budget_projects_number: 2)
+           vote_minimum_budget_projects_number: vote_minimum_budget_projects_number)
   end
   let(:minimum_to_select) { 3 }
   let(:category) { create(:category, participatory_space: component.participatory_space) }
@@ -57,13 +58,13 @@ describe "Orders", type: :system do
       context "when voting by minimum projects number" do
         it "displays description messages" do
           within ".budget-summary" do
-            expect(page).to have_content("What projects do you think we should allocate budget for? Select at least 3 projects you want and vote according to your preferences to define the budget.")
+            expect(page).to have_content("What projects do you think we should allocate budget for? Select at least #{vote_minimum_budget_projects_number} projects you want and vote according to your preferences to define the budget.")
           end
         end
 
         it "displays rules" do
           within ".voting-rules" do
-            expect(page).to have_content("Select at least 3 projects you want and vote according to your preferences to define the budget.")
+            expect(page).to have_content("Select at least #{vote_minimum_budget_projects_number} projects you want and vote according to your preferences to define the budget.")
           end
         end
 
