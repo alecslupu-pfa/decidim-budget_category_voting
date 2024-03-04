@@ -11,6 +11,7 @@ module Decidim
     include ActiveSupport::Configurable
 
     module Overrides
+      autoload :Order, "decidim/budget_category_voting/overrides/order"
       module Admin
         autoload :BudgetsController, "decidim/budget_category_voting/overrides/admin/budgets_controller"
         autoload :BudgetForm, "decidim/budget_category_voting/overrides/admin/budget_form"

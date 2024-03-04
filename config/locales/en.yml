@@ -26,6 +26,8 @@ en:
           up: Up
         form:
           add: Add
+      rule:
+        remaining_votes: Remaining votes
     components:
       budget_category_voting:
         name: BudgetCategoryVoting
