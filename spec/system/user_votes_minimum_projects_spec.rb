@@ -14,7 +14,8 @@ describe "Orders", type: :system do
     create(:budgets_component,
            :with_minimum_budget_projects,
            manifest: manifest,
-           participatory_space: participatory_process)
+           participatory_space: participatory_process,
+           vote_minimum_budget_projects_number: 2)
   end
   let(:minimum_to_select) { 3 }
   let(:category) { create(:category, participatory_space: component.participatory_space) }
@@ -118,252 +119,70 @@ describe "Orders", type: :system do
       end
     end
 
-    # context "and has pending order" do
-    #   let!(:order) { create(:order, user: user, budget: budget) }
-    #   let!(:line_item) { create(:line_item, order: order, project: project) }
-    #
-    #   it "removes a project from the current order" do
-    #     visit_budget
-    #
-    #     expect(page).to have_content "ASSIGNED: €25,000,000"
-    #
-    #     within "#project-#{project.id}-item" do
-    #       page.find(".budget-list__action").click
-    #     end
-    #
-    #     expect(page).to have_content "ASSIGNED: €0"
-    #     expect(page).to have_no_content "1 project selected"
-    #     expect(page).to have_no_selector ".budget-summary__selected"
-    #
-    #     within "#order-progress .budget-summary__progressbox" do
-    #       expect(page).to have_content "0%"
-    #     end
-    #
-    #     expect(page).to have_no_selector ".budget-list__data--added"
-    #   end
-    #
-    #   it "is alerted when trying to leave the component before completing" do
-    #     budget_projects_path = Decidim::EngineRouter.main_proxy(component).budget_projects_path(budget)
-    #
-    #     visit_budget
-    #
-    #     expect(page).to have_content "ASSIGNED: €25,000,000"
-    #
-    #     page.find(".logo-wrapper a").click
-    #
-    #     expect(page).to have_content "You have not yet voted"
-    #
-    #     click_button "Return to voting"
-    #
-    #     expect(page).not_to have_content("You have not yet voted")
-    #     expect(page).to have_current_path budget_projects_path
-    #   end
-    #
-    #   it "is alerted but can sign out before completing" do
-    #     visit_budget
-    #
-    #     page.find("#user-menu-control").click
-    #     page.find(".sign-out-link").click
-    #
-    #     expect(page).to have_content "You have not yet voted"
-    #
-    #     page.find("#exit-notification-link").click
-    #     expect(page).to have_content("Signed out successfully")
-    #   end
-    #
-    #   context "and try to vote a project that exceed the total budget" do
-    #     let!(:expensive_project) { create(:project, budget: budget, budget_amount: 250_000_000) }
-    #
-    #     it "cannot add the project" do
-    #       visit_budget
-    #
-    #       within "#project-#{expensive_project.id}-item" do
-    #         page.find(".budget-list__action").click
-    #       end
-    #
-    #       expect(page).to have_css("#budget-excess", visible: :visible)
-    #     end
-    #   end
-    #
-    #   context "and in project show page cant exceed the budget" do
-    #     let!(:expensive_project) { create(:project, budget: budget, budget_amount: 250_000_000) }
-    #
-    #     it "cannot add the project" do
-    #       page.visit Decidim::EngineRouter.main_proxy(component).budget_project_path(budget, expensive_project)
-    #
-    #       within "#project-#{expensive_project.id}-budget-button" do
-    #         page.find("button").click
-    #       end
-    #
-    #       expect(page).to have_css("#budget-excess", visible: :visible)
-    #     end
-    #   end
-    #
-    #   context "and add another project exceeding vote threshold" do
-    #     let!(:other_project) { create(:project, budget: budget, budget_amount: 50_000_000) }
-    #
-    #     it "can complete the checkout process" do
-    #       visit_budget
-    #
-    #       within "#project-#{other_project.id}-item" do
-    #         page.find(".budget-list__action").click
-    #       end
-    #
-    #       expect(page).to have_selector ".budget-list__data--added", count: 2
-    #
-    #       within "#order-progress .budget-summary__progressbox:not(.budget-summary__progressbox--fixed)" do
-    #         page.find(".button.small").click
-    #       end
-    #
-    #       expect(page).to have_css("#budget-confirm", visible: :visible)
-    #
-    #       within "#budget-confirm" do
-    #         page.find(".button.expanded").click
-    #       end
-    #
-    #       expect(page).to have_content("successfully")
-    #
-    #       within "#order-progress .budget-summary__progressbox" do
-    #         expect(page).to have_no_selector("button.small")
-    #       end
-    #     end
-    #   end
-    #
-    #   context "when the voting rule is set to minimum projects" do
-    #     before do
-    #       order.destroy!
-    #     end
-    #
-    #     let!(:order_min) { create(:order, user: user, budget: budget) }
-    #
-    #     it "shows the rule description" do
-    #       visit_budget
-    #
-    #       within ".card.budget-summary" do
-    #         expect(page).to have_content("Select at least 3 projects you want and vote")
-    #       end
-    #     end
-    #
-    #     context "when the order total budget doesn't reach the minimum" do
-    #       it "cannot vote" do
-    #         visit_budget
-    #
-    #         within "#order-progress" do
-    #           expect(page).to have_button("Vote", disabled: true)
-    #         end
-    #       end
-    #     end
-    #
-    #     context "when the order total budget exceeds the minimum" do
-    #       before do
-    #         order_min.projects = projects
-    #         order_min.save!
-    #       end
-    #
-    #       it "can vote" do
-    #         visit_budget
-    #
-    #         within "#order-progress" do
-    #           expect(page).to have_button("Vote", disabled: false)
-    #         end
-    #       end
-    #     end
-    #   end
-    # end
-    #
-    # context "and has a finished order" do
-    #   let!(:order) do
-    #     order = create(:order, user: user, budget: budget)
-    #     order.projects = projects
-    #     order.checked_out_at = Time.current
-    #     order.save!
-    #     order
-    #   end
-    #
-    #   it "can cancel the order" do
-    #     visit_budget
-    #
-    #     within ".budget-summary" do
-    #       accept_confirm { page.find(".cancel-order").click }
-    #     end
-    #
-    #     expect(page).to have_content("successfully")
-    #
-    #     within "#order-progress .budget-summary__progressbox" do
-    #       expect(page).to have_selector("button.small:disabled")
-    #     end
-    #
-    #     within ".budget-summary" do
-    #       expect(page).to have_no_selector(".cancel-order")
-    #     end
-    #   end
-    #
-    #   it "is not alerted when trying to leave the component" do
-    #     visit_budget
-    #
-    #     expect(page).to have_content("Budget vote completed")
-    #
-    #     page.find(".logo-wrapper a").click
-    #
-    #     expect(page).to have_current_path decidim.root_path
-    #   end
-    # end
-    #
-    # context "and votes are disabled" do
-    #   let!(:component) do
-    #     create(:budgets_component,
-    #            :with_votes_disabled,
-    #            manifest: manifest,
-    #            participatory_space: participatory_process)
-    #   end
-    #
-    #   it "cannot create new orders" do
-    #     visit_budget
-    #
-    #     expect(page).to have_no_selector("button.budget-list__action")
-    #   end
-    # end
-    #
-    # context "and show votes are enabled" do
-    #   let!(:component) do
-    #     create(:budgets_component,
-    #            :with_show_votes_enabled,
-    #            manifest: manifest,
-    #            participatory_space: participatory_process)
-    #   end
-    #
-    #   let!(:order) do
-    #     order = create(:order, user: user, budget: budget)
-    #     order.projects = projects
-    #     order.checked_out_at = Time.current
-    #     order.save!
-    #     order
-    #   end
-    #
-    #   it "displays the number of votes for a project" do
-    #     visit_budget
-    #
-    #     within "#project-#{project.id}-item .budget-list__number" do
-    #       expect(page).to have_selector(".project-votes", text: "1 VOTE")
-    #     end
-    #   end
-    # end
-    #
-    # context "and votes are finished" do
-    #   let!(:component) do
-    #     create(:budgets_component,
-    #            :with_voting_finished,
-    #            manifest: manifest,
-    #            participatory_space: participatory_process)
-    #   end
-    #   let!(:projects) { create_list(:project, 2, :selected, budget: budget, budget_amount: 25_000_000) }
-    #
-    #   it "renders selected projects" do
-    #     visit_budget
-    #
-    #     expect(page).to have_selector(".card__text--status.success", count: 2)
-    #   end
-    # end
+    context "and has pending order" do
+      let!(:order) { create(:order, user: user, budget: budget) }
+      let!(:line_item) { create(:line_item, order: order, project: project) }
+      let(:minimum_to_select) { 3 }
+
+      context "when the voting rule is set to minimum projects" do
+        before do
+          order.destroy!
+        end
+
+        let!(:order_min) { create(:order, user: user, budget: budget) }
+
+        context "when allows the voting" do
+          it "can vote" do
+            visit_budget
+
+            projects.each do |project|
+              within "#project-#{project.id}-item" do
+                page.find(".budget-list__action").click
+              end
+            end
+
+            within "#order-progress" do
+              expect(page).to have_button("Vote", disabled: false)
+            end
+          end
+        end
+
+        context "when prevents voting if the minimum projects are not selected" do
+          it "cannot vote" do
+            visit_budget
+
+            within "#order-progress" do
+              expect(page).to have_button("Vote", disabled: true)
+            end
+          end
+
+          context "when categoy is mismatched" do
+            let(:minimum_to_select) { 5 }
+            let(:additional_category) { create(:category, participatory_space: component.participatory_space) }
+            let!(:additional_projects) { create_list(:project, 2, budget: budget, category: additional_category, budget_amount: 25_000_000) }
+
+            it "cannot vote" do
+              visit_budget
+
+              projects.each do |project|
+                within "#project-#{project.id}-item" do
+                  page.find(".budget-list__action").click
+                end
+              end
+              additional_projects.each do |project|
+                within "#project-#{project.id}-item" do
+                  page.find(".budget-list__action").click
+                end
+              end
+
+              within "#order-progress" do
+                expect(page).to have_button("Vote", disabled: true)
+              end
+            end
+          end
+        end
+      end
+    end
   end
 
   def visit_budget

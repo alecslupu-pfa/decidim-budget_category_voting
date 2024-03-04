@@ -38,7 +38,7 @@ jobs:
         with:
           ruby-version: 3.0.2
           bundler-cache: true
-          
+
       - uses: nanasess/setup-chromedriver@v2
         with:
           chromedriver-version: 119.0.6045.105
