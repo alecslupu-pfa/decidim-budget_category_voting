@@ -1,9 +1,9 @@
-<div class="column vote_by_category" data-category-id="<%= category&.id %>">
+<%= content_tag :div, class: "column vote_by_category", data: data do %>
   <div class="card" style="<%= available_styles %>">
     <div class="card__content">
       <p class="text-center"><%= title %></p>
       <h3 class="heading2 text-center"><%= remaining_votes %></h3>
-      <p class="text-center"><%= label %></p>
+      <p class="text-center"><%= caption %></p>
     </div>
   </div>
-</div>
+<% end %>

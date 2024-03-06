@@ -6,3 +6,5 @@
     <% end %>
   </div>
 </div>
+
+<% snippets.add(:foot, javascript_pack_tag("decidim_budget_category_voting")) %>
