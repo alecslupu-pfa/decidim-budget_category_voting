@@ -27,6 +27,7 @@ en:
         form:
           add: Add
       rule:
+        available_votes: Available votes
         remaining_votes: Remaining votes
     components:
       budget_category_voting:

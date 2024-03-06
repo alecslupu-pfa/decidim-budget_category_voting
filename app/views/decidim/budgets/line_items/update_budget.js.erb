@@ -4,7 +4,7 @@ var $orderProgress = $('#order-progress');
 var $projectItem = $('#project-<%= project.id %>-item');
 var $projectBudgetButton = $('#project-<%= project.id %>-budget-button');
 var $budgetConfirm = $('#budget-confirm');
-var $votingSummary = $(`div[data-category-id="<%= project.category&.id %>"]`);
+var $votingSummary = $(`.vote_by_category[data-category=<%= project.category&.id %>]`);
 
 morphdom($orderTotalBudget[0], '<%= j(render partial: "decidim/budgets/projects/order_total_budget").strip.html_safe %>');
 morphdom($orderSelectedProjects[0], '<%= j(render partial: "decidim/budgets/projects/order_selected_projects").strip.html_safe %>');

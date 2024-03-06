@@ -24,6 +24,10 @@ module Decidim
               end
             end
 
+            def projects_sum_for_rule(category_budget_rule)
+              projects.with_category(category_for(category_budget_rule)).sum(:budget_amount)
+            end
+
             def projects_count_for_rule(category_budget_rule)
               projects.with_category(category_for(category_budget_rule)).count
             end
@@ -50,6 +54,12 @@ module Decidim
                 total_projects >= minimum_projects,
                 total_projects <= maximum_projects
               ].all?
+            end
+
+            def allocation_for(project)
+              return 1 if projects_rule? || minimum_projects_rule?
+
+              project.budget_amount
             end
           end
         end
