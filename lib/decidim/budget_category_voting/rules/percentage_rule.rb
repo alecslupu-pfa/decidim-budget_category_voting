@@ -4,7 +4,7 @@ module Decidim
   module BudgetCategoryVoting
     module Rules
       class PercentageRule < GenericRule
-        include  ActionView::Helpers::NumberHelper
+        include ActionView::Helpers::NumberHelper
 
         def caption = I18n.t("remaining_votes", scope: "decidim.budget_category_voting.rule")
 
@@ -15,9 +15,9 @@ module Decidim
 
         def current_allocation
           @current_allocation ||= begin
-                                  currently_selected = current_order.projects_sum_for_rule(model)
-                                  (currently_selected.to_f / current_order.budget.total_budget) * 100
-                                end
+            currently_selected = current_order.projects_sum_for_rule(model)
+            (currently_selected.to_f / current_order.budget.total_budget) * 100
+          end
         end
 
         def total_allocation
@@ -25,10 +25,10 @@ module Decidim
         end
 
         private
+
         def computed_percentage
           model.fetch("vote_threshold_percent", 0).to_f
         end
-
       end
     end
   end
