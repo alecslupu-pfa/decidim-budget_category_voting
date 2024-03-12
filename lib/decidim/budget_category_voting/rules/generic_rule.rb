@@ -19,6 +19,7 @@ module Decidim
         end
 
         def current_rule_explanation = ""
+
         def current_rule_description = ""
 
         def remaining_votes = 0

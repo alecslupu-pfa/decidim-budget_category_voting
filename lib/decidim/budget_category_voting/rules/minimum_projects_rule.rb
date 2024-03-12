@@ -4,7 +4,6 @@ module Decidim
   module BudgetCategoryVoting
     module Rules
       class MinimumProjectsRule < GenericRule
-
         def current_rule_explanation
           t(".minimum_projects_rule.instruction_html", minimum_number: minimum_projects)
         end

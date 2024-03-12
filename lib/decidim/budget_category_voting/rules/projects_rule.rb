@@ -4,7 +4,6 @@ module Decidim
   module BudgetCategoryVoting
     module Rules
       class ProjectsRule < GenericRule
-
         def current_rule_explanation
           if current_order.minimum_projects.positive? && current_allocation < maximum_projects
             t(
@@ -13,7 +12,7 @@ module Decidim
               maximum_number: maximum_projects
             )
           else
-            t(".projects_rule_maximum_only.instruction_html",   maximum_number: maximum_projects)
+            t(".projects_rule_maximum_only.instruction_html", maximum_number: maximum_projects)
           end
         end
 
