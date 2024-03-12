@@ -4,7 +4,35 @@ module Decidim
   module BudgetCategoryVoting
     module Rules
       class ProjectsRule < GenericRule
-        def caption = I18n.t("available_votes", scope: "decidim.budget_category_voting.rule")
+
+        def current_rule_explanation
+          if current_order.minimum_projects.positive? && current_allocation < maximum_projects
+            t(
+              ".projects_rule.instruction_html",
+              minimum_number: minimum_projects,
+              maximum_number: maximum_projects
+            )
+          else
+            t(".projects_rule_maximum_only.instruction_html",   maximum_number: maximum_projects)
+          end
+        end
+
+        def current_rule_description
+          if current_order.minimum_projects.positive? && minimum_projects < maximum_projects
+            t(
+              ".projects_rule.description_html",
+              minimum_number: current_order.minimum_projects,
+              maximum_number: current_order.maximum_projects
+            )
+          else
+            t(
+              ".projects_rule_maximum_only.description_html",
+              maximum_number: current_order.maximum_projects
+            )
+          end
+        end
+
+        def caption = t("rule.available_votes")
 
         def minimum_projects = model.fetch("vote_selected_projects_minimum", 0).to_i
 

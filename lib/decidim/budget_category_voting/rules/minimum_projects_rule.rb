@@ -4,8 +4,17 @@ module Decidim
   module BudgetCategoryVoting
     module Rules
       class MinimumProjectsRule < GenericRule
+
+        def current_rule_explanation
+          t(".minimum_projects_rule.instruction_html", minimum_number: minimum_projects)
+        end
+
+        def current_rule_description
+          t(".minimum_projects_rule.description_html", minimum_number: minimum_projects)
+        end
+
         def caption
-          I18n.t("remaining_votes", scope: "decidim.budget_category_voting.rule")
+          t("rule.remaining_votes")
         end
 
         def remaining_votes
