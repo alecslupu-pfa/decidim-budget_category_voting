@@ -8,3 +8,6 @@ ignore_unused:
 
 ignore_missing:
   - decidim.participatory_processes.scopes.global
+  - decidim.budgets.projects.budget_excess.close
+  - decidim.budgets.projects.budget_excess.ok
+  - decidim.budgets.projects.budget_summary.rules.title
