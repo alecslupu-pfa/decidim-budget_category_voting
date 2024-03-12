@@ -7,3 +7,32 @@
     </div>
   </div>
 <% end %>
+
+<div class="reveal" data-reveal id="budget-excess-<%= category&.id %>">
+  <div class="reveal__header">
+    <h3 class="reveal__title"><%= popup_title %></h3>
+    <button class="close-button" data-close aria-label="<%= t("decidim.budgets.projects.budget_excess.close") %>" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <p><%= popup_content %></p>
+  <div class="row column">
+    <div class="callout warning">
+      <div class="row">
+        <div class="columns">
+          <h4 class="heading4">
+            <%= t("decidim.budgets.projects.budget_summary.rules.title") %>
+          </h4>
+          <ul>
+            <%= current_rule_explanation %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns medium-8 medium-offset-2">
+      <button data-close class="button expanded"><%= t("decidim.budgets.projects.budget_excess.ok") %></button>
+    </div>
+  </div>
+</div>
