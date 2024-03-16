@@ -20,8 +20,6 @@ module Decidim
 
         def current_rule_explanation = ""
 
-        def current_rule_description = ""
-
         def remaining_votes = 0
 
         def caption = ""

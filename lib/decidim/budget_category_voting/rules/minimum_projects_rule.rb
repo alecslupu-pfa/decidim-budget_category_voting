@@ -8,10 +8,6 @@ module Decidim
           t(".minimum_projects_rule.instruction_html", minimum_number: minimum_projects)
         end
 
-        def current_rule_description
-          t(".minimum_projects_rule.description_html", minimum_number: minimum_projects)
-        end
-
         def caption
           t("rule.remaining_votes")
         end

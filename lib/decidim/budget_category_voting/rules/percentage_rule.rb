@@ -9,11 +9,7 @@ module Decidim
         def caption = t("rule.remaining_votes")
 
         def current_rule_explanation
-          t("vote_threshold_percent_rule.instruction_html", minimum_budget: budget_to_currency(total_allocation))
-        end
-
-        def current_rule_description
-          t(".vote_threshold_percent_rule.description_html", minimum_budget: budget_to_currency(total_allocation))
+          t("vote_threshold_percent_rule.instruction_html", minimum_budget: budget_to_currency(minimum_allocation))
         end
 
         def remaining_votes
@@ -33,6 +29,9 @@ module Decidim
         end
 
         private
+        def minimum_allocation
+          model.fetch("vote_threshold_percent", 0).to_f * total_allocation / 100
+        end
 
         def computed_percentage
           model.fetch("vote_threshold_percent", 0).to_f

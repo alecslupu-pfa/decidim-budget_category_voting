@@ -1,5 +1,6 @@
 ---
 en:
+
   activemodel:
     errors:
       models:
@@ -25,6 +26,7 @@ en:
           remove: Remove
           up: Up
         form:
+          category_budget_rules: Category budget rules
           add: Add
       budget_excess:
         budget_excess:

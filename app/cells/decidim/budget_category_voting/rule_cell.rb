@@ -24,7 +24,7 @@ module Decidim
       delegate :current_participatory_space, :current_order, to: :controller
       delegate :minimum_projects_rule?, :projects_rule?, to: :current_order
 
-      delegate :remaining_votes, :caption, :total_allocation, :current_allocation, :current_rule_description, :current_rule_explanation, to: :rule
+      delegate :remaining_votes, :caption, :total_allocation, :current_allocation, :current_rule_explanation, to: :rule
 
       def available_styles
         return "" unless category.respond_to?(:text_color)

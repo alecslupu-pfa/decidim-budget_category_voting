@@ -16,21 +16,6 @@ module Decidim
           end
         end
 
-        def current_rule_description
-          if current_order.minimum_projects.positive? && minimum_projects < maximum_projects
-            t(
-              ".projects_rule.description_html",
-              minimum_number: current_order.minimum_projects,
-              maximum_number: current_order.maximum_projects
-            )
-          else
-            t(
-              ".projects_rule_maximum_only.description_html",
-              maximum_number: current_order.maximum_projects
-            )
-          end
-        end
-
         def caption = t("rule.available_votes")
 
         def minimum_projects = model.fetch("vote_selected_projects_minimum", 0).to_i

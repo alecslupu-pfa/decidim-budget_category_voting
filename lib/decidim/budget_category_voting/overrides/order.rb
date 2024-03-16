@@ -6,6 +6,19 @@ module Decidim
       module Order
         def self.prepended(base)
           base.class_eval do
+
+            validate :budget_category_validation
+
+            def budget_category_validation
+              if projects_rule?
+                errors.add(:base, :total_budget) unless projects_rules_condition_valid?
+              elsif minimum_projects_rule?
+                errors.add(:base, :total_budget) unless minimum_projects_condition_valid?
+              else
+                errors.add(:base, :total_budget) unless minimum_budget_condition_valid?
+              end
+            end
+
             def can_checkout?
               if projects_rule?
                 projects_rules_condition_valid?
