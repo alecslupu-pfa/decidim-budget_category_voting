@@ -1,6 +1,5 @@
 ---
 en:
-
   activemodel:
     errors:
       models:
@@ -26,8 +25,8 @@ en:
           remove: Remove
           up: Up
         form:
-          category_budget_rules: Category budget rules
           add: Add
+          category_budget_rules: Category budget rules
       budget_excess:
         budget_excess:
           description_html: This project exceeds the maximum budget and can not be

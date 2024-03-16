@@ -18,12 +18,12 @@ module Decidim
 
       initializer "budget_category_voting.overrides", after: "decidim.action_controller" do
         config.to_prepare do
-            Decidim::Budgets::Order.prepend Decidim::BudgetCategoryVoting::Overrides::Order
+          Decidim::Budgets::Order.prepend Decidim::BudgetCategoryVoting::Overrides::Order
 
-            Decidim::Budgets::Admin::BudgetsController.prepend Decidim::BudgetCategoryVoting::Overrides::Admin::BudgetsController
-            Decidim::Budgets::Admin::BudgetForm.prepend Decidim::BudgetCategoryVoting::Overrides::Admin::BudgetForm
-            Decidim::Budgets::Admin::CreateBudget.prepend Decidim::BudgetCategoryVoting::Overrides::Admin::CreateBudget
-            Decidim::Budgets::Admin::UpdateBudget.prepend Decidim::BudgetCategoryVoting::Overrides::Admin::UpdateBudget
+          Decidim::Budgets::Admin::BudgetsController.prepend Decidim::BudgetCategoryVoting::Overrides::Admin::BudgetsController
+          Decidim::Budgets::Admin::BudgetForm.prepend Decidim::BudgetCategoryVoting::Overrides::Admin::BudgetForm
+          Decidim::Budgets::Admin::CreateBudget.prepend Decidim::BudgetCategoryVoting::Overrides::Admin::CreateBudget
+          Decidim::Budgets::Admin::UpdateBudget.prepend Decidim::BudgetCategoryVoting::Overrides::Admin::UpdateBudget
         end
       end
 

@@ -6,7 +6,6 @@ module Decidim
       module Order
         def self.prepended(base)
           base.class_eval do
-
             validate :budget_category_validation
 
             def budget_category_validation

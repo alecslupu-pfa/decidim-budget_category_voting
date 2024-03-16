@@ -29,6 +29,7 @@ module Decidim
         end
 
         private
+
         def minimum_allocation
           model.fetch("vote_threshold_percent", 0).to_f * total_allocation / 100
         end
