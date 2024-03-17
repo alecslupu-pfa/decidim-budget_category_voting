@@ -78,24 +78,24 @@ module Decidim
         end
 
         def budget_voting_projects_value_setting_min
-          return if settings.vote_selected_projects_minimum.present? && settings.vote_selected_projects_minimum.to_i >= 0
+          return if vote_selected_projects_minimum.present? && vote_selected_projects_minimum.to_i >= 0
 
-          settings.errors.add(:vote_selected_projects_minimum)
+          errors.add(:vote_selected_projects_minimum)
         end
 
         def budget_voting_projects_value_setting_max
-          return if settings.vote_selected_projects_maximum.present? && settings.vote_selected_projects_maximum.to_i.positive?
+          return if vote_selected_projects_maximum.present? && vote_selected_projects_maximum.to_i.positive?
 
-          settings.errors.add(:vote_selected_projects_maximum)
+          errors.add(:vote_selected_projects_maximum)
         end
 
         def budget_voting_projects_value_setting_both
-          return if settings.errors[:vote_selected_projects_minimum].present?
-          return if settings.errors[:vote_selected_projects_maximum].present?
-          return if settings.vote_selected_projects_maximum >= settings.vote_selected_projects_minimum
+          return if errors[:vote_selected_projects_minimum].present?
+          return if errors[:vote_selected_projects_maximum].present?
+          return if vote_selected_projects_maximum >= vote_selected_projects_minimum
 
-          settings.errors.add(:vote_selected_projects_minimum)
-          settings.errors.add(:vote_selected_projects_maximum)
+          errors.add(:vote_selected_projects_minimum)
+          errors.add(:vote_selected_projects_maximum)
         end
       end
     end

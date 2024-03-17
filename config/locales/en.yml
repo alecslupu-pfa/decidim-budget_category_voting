@@ -62,7 +62,8 @@ en:
           to define the budget.</li>"
       rule:
         available_votes: Available votes
-        remaining_votes: Remaining votes
+        remaining_budget: Remaining budget
+        remaining_votes: Required votes
       vote_threshold_percent_rule:
         description_html: What projects from <strong>%{category}</strong> category
           do you think we should allocate budget for? Assign at least %{minimum_budget}

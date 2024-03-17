@@ -25,8 +25,8 @@ $(() => {
             $currentTarget.addClass("loading-spinner");
         }
 
-        const $targetCategoryId = $currentTarget.parents(".budget-list__data").first().data("category");
-        const $targetCategory = $(`.vote_by_category[data-category=${$targetCategoryId}]`).first();
+        const $targetCategoryId = $currentTarget.parents(".budget-list__data").first().data("categoryId");
+        const $targetCategory = $(`.vote_by_category[data-category-id=${$targetCategoryId}]`).first();
         const $budgetCategoryExceedModal = $(`#budget-excess-${$targetCategoryId}`);
 
         let quotaExceeded = ((currentAllocation + projectAllocation) > totalAllocation);
@@ -34,7 +34,7 @@ $(() => {
 
         if ($targetCategory.length > 0) {
             const currentCategoryAllocation = parseInt($targetCategory.attr("data-current-allocation"), 10);
-            const totalCategoryAllocation = parseInt($targetCategory.attr("data-total-allocation"), 10);
+            const totalCategoryAllocation = parseInt($targetCategory.attr("data-allocation"), 10);
             categoryQuotaExceeded = ((currentCategoryAllocation + projectAllocation) > totalCategoryAllocation || quotaExceeded);
         }
 
