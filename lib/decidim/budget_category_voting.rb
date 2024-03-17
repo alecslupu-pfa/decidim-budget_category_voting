@@ -10,13 +10,6 @@ module Decidim
   module BudgetCategoryVoting
     include ActiveSupport::Configurable
 
-    # module Rules
-    #   autoload :GenericRule, "decidim/budget_category_voting/rules/generic_rule"
-    #   autoload :MinimumProjectsRule, "decidim/budget_category_voting/rules/minimum_projects_rule"
-    #   autoload :ProjectsRule, "decidim/budget_category_voting/rules/projects_rule"
-    #   autoload :PercentageRule, "decidim/budget_category_voting/rules/percentage_rule"
-    # end
-
     module Overrides
       autoload :Order, "decidim/budget_category_voting/overrides/order"
       module Admin

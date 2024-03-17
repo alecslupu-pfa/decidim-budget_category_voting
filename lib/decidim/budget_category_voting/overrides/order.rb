@@ -27,8 +27,14 @@ module Decidim
               @categories ||= budget.category_budget_rules.collect { |rule| category_class_for(rule) }
             end
 
+            def categories_can_checkout
+              errors.add(:categories) unless categories.collect(&:valid?).all?
+            end
+
             alias_method :legacy_can_checkout?, :can_checkout?
             private :legacy_can_checkout?
+
+            validate :categories_can_checkout, if: :checked_out?
           end
 
           base.include InstanceMethods

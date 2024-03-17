@@ -4,6 +4,9 @@ module Decidim
   module BudgetCategoryVoting
     module CategoryOrder
       class Project < Base
+        validates :total, numericality: { less_than_or_equal_to: :maximum_projects }
+        validates :total, numericality: { greater_than_or_equal_to: :minimum_projects }
+
         def card_class = "decidim/budget_category_voting/project"
 
         def total = projects.count

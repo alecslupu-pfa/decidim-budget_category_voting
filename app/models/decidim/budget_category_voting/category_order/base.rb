@@ -42,7 +42,9 @@ module Decidim
 
         attr_reader :order, :rule
 
-        def projects = order.projects.with_category(category)
+        def projects
+          @projects ||= order.projects.with_category(category)
+        end
       end
     end
   end

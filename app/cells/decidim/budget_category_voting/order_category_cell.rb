@@ -33,8 +33,11 @@ module Decidim
         {
           category_id: category.id,
           "current-allocation": model.total
+          # allocation: model.total_allocation,
         }
       end
+
+      #      def total_allocation = current_order.total
 
       private
 
