@@ -2,9 +2,6 @@
 
 module Decidim
   module BudgetCategoryVoting
-    #  i18n-tasks-use t('decidim.budget_category_voting.projects_rule.instruction_html')
-    #  i18n-tasks-use t('decidim.assemblies.assembly_types.government')
-    #  i18n-tasks-use t('decidim.assemblies.assembly_types.government')
     class ProjectCell < OrderCategoryCell
       delegate :maximum_projects, :minimum_projects, :total, :order, to: :model
       def caption
