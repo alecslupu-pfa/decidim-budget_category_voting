@@ -73,7 +73,7 @@ module Decidim
           return unless settings.vote_rule_selected_projects_enabled
 
           budget_voting_projects_value_setting_min
-          budget_voting_projects_value_setting_max
+          # budget_voting_projects_value_setting_max
           budget_voting_projects_value_setting_both
         end
 
@@ -92,6 +92,7 @@ module Decidim
         def budget_voting_projects_value_setting_both
           return if errors[:vote_selected_projects_minimum].present?
           return if errors[:vote_selected_projects_maximum].present?
+          return if vote_selected_projects_maximum.blank?
           return if vote_selected_projects_maximum >= vote_selected_projects_minimum
 
           errors.add(:vote_selected_projects_minimum)

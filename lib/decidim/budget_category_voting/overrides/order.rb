@@ -17,11 +17,11 @@ module Decidim
               Decidim::BudgetCategoryVoting::CategoryOrder::Percentage.new(self, rule)
             end
           end
-
-          def can_checkout? = categories.all?(&:can_checkout?) && legacy_can_checkout?
         end
 
         def self.prepended(base)
+          base.include InstanceMethods
+
           base.class_eval do
             def categories
               @categories ||= budget.category_budget_rules.collect { |rule| category_class_for(rule) }
@@ -35,9 +35,11 @@ module Decidim
             private :legacy_can_checkout?
 
             validate :categories_can_checkout, if: :checked_out?
-          end
 
-          base.include InstanceMethods
+            def can_checkout?
+              categories.all?(&:can_checkout?) && legacy_can_checkout?
+            end
+          end
         end
       end
     end

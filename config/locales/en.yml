@@ -61,9 +61,10 @@ en:
           <strong>%{category}</strong> you want and vote according to your preferences
           to define the budget.</li>"
       rule:
-        available_votes: Available votes
+        available_votes: Votes that can be assigned
         remaining_budget: Remaining budget
         remaining_votes: Required votes
+        required_votes: Votes required to assign
       vote_threshold_percent_rule:
         description_html: What projects from <strong>%{category}</strong> category
           do you think we should allocate budget for? Assign at least %{minimum_budget}

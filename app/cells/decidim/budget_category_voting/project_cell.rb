@@ -2,25 +2,37 @@
 
 module Decidim
   module BudgetCategoryVoting
+    #  i18n-tasks-use t('decidim.budget_category_voting.projects_rule.instruction_html')
+    #  i18n-tasks-use t('decidim.assemblies.assembly_types.government')
+    #  i18n-tasks-use t('decidim.assemblies.assembly_types.government')
     class ProjectCell < OrderCategoryCell
-      delegate :maximum_projects, :minimum_projects, :total, to: :model
-      def caption = t("rule.available_votes")
+      delegate :maximum_projects, :minimum_projects, :total, :order, to: :model
+      def caption
+        if minimum_projects > total
+          t("rule.required_votes")
+        else
+          t("rule.available_votes")
+        end
+      end
 
       def current_rule_explanation
         if minimum_projects.positive? && total < maximum_projects
           t(
-            ".projects_rule.instruction_html",
+            "projects_rule.instruction_html",
             minimum_number: minimum_projects,
             maximum_number: maximum_projects
           )
         else
-          t(".projects_rule_maximum_only.instruction_html", maximum_number: maximum_projects)
+          t("projects_rule_maximum_only.instruction_html", maximum_number: maximum_projects)
         end
       end
 
       def remaining_votes
-        count = minimum_projects - total
-        count >= 0 ? count : 0
+        return minimum_projects if total.zero?
+        return minimum_projects - total if minimum_projects > total
+        return maximum_projects - total if maximum_projects.positive? && total < maximum_projects
+
+        order.available_allocation - order.total
       end
     end
   end

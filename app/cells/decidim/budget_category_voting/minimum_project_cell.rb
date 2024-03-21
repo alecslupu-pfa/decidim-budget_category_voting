@@ -5,7 +5,7 @@ module Decidim
     class MinimumProjectCell < OrderCategoryCell
       delegate :minimum_projects, :total, to: :model
 
-      def caption = t("rule.remaining_votes")
+      def caption = t("rule.required_votes")
 
       def current_rule_explanation
         t("minimum_projects_rule.instruction_html", minimum_number: minimum_projects)

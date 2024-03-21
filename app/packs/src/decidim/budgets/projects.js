@@ -25,25 +25,30 @@ $(() => {
             $currentTarget.addClass("loading-spinner");
         }
 
+        $targetCategory = null;
         const $targetCategoryId = $currentTarget.parents(".budget-list__data").first().data("categoryId");
-        const $targetCategory = $(`.vote_by_category[data-category-id=${$targetCategoryId}]`).first();
-        const $budgetCategoryExceedModal = $(`#budget-excess-${$targetCategoryId}`);
+        if ($targetCategoryId !== undefined) {
+            $targetCategory = $(`.vote_by_category[data-category-id=${$targetCategoryId}]`).first();
+        }
 
         let quotaExceeded = ((currentAllocation + projectAllocation) > totalAllocation);
         let categoryQuotaExceeded = false;
 
-        if ($targetCategory.length > 0) {
+        if ($targetCategory && $targetCategory.length > 0) {
             const currentCategoryAllocation = parseInt($targetCategory.attr("data-current-allocation"), 10);
             const totalCategoryAllocation = parseInt($targetCategory.attr("data-allocation"), 10);
             categoryQuotaExceeded = ((currentCategoryAllocation + projectAllocation) > totalCategoryAllocation || quotaExceeded);
         }
 
         if ($currentTarget.attr("disabled")) {
+            console.log("Disabled");
             cancelEvent(event);
         } else if (($currentTarget.attr("data-add") === "true") && categoryQuotaExceeded === true) {
-            $budgetCategoryExceedModal.foundation("toggle");
+            console.log("categoryQuotaExceeded");
+            $(`#budget-excess-${$targetCategoryId}`).foundation("toggle");
             cancelEvent(event);
         } else if (($currentTarget.attr("data-add") === "true") && quotaExceeded === true) {
+            console.log("mainQuotaExceeded");
             $budgetExceedModal.foundation("toggle");
             cancelEvent(event);
         }

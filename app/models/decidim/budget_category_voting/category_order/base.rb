@@ -6,6 +6,11 @@ module Decidim
       class Base
         include ActiveModel::Validations
 
+        attr_reader :order, :rule
+
+        delegate :id, to: :category
+        delegate :checked_out?, :budget, to: :order
+
         def initialize(order, rule)
           @order = order
           @rule = rule.with_indifferent_access
@@ -14,9 +19,6 @@ module Decidim
         def category
           @category ||= Decidim::Category.find(rule[:decidim_category_id])
         end
-
-        delegate :id, to: :category
-        delegate :checked_out?, :budget, to: :order
 
         def card_class
           raise "Not implemented"
@@ -39,8 +41,6 @@ module Decidim
         def allocation_for(project) = project.budget_amount
 
         protected
-
-        attr_reader :order, :rule
 
         def projects
           @projects ||= order.projects.with_category(category)
