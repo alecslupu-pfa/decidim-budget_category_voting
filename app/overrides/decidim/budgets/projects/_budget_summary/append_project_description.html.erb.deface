@@ -1,4 +1,0 @@
-<!-- insert_after "erb[loud]:contains('raw current_rule_description')" -->
-<% budget.category_budget_rules.each do |rule| %>
-  <%= cell("decidim/budget_category_voting/rule", rule).rule.current_rule_description.html_safe %>
-<% end %>
