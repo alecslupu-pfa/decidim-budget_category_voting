@@ -25,6 +25,7 @@ module Decidim
           end
 
           private
+
           def fetch_category_budget_rules
             form.category_budget_rules.reject(&:deleted).collect(&:attributes)
           end
