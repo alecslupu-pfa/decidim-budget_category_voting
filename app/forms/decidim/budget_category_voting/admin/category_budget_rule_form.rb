@@ -8,15 +8,16 @@ module Decidim
         attribute :deleted, Boolean, default: false
 
         attribute :decidim_category_id, Integer
-        validates :decidim_category_id, presence: true, unless: :deleted
         attribute :vote_threshold_percent, Integer
         attribute :vote_minimum_budget_projects_number, Integer
         attribute :vote_selected_projects_minimum, Integer
         attribute :vote_selected_projects_maximum, Integer
 
+        validates :decidim_category_id, presence: true, unless: :deleted
         validate :budget_voting_rule_threshold_value_setting,
                  :budget_voting_rule_minimum_value_setting,
-                 :budget_voting_rule_projects_value_setting
+                 :budget_voting_rule_projects_value_setting, unless: :deleted
+
         def to_param
           return id if id.present?
 

@@ -4,8 +4,6 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem "uri", "0.10.1"
-
 gem "decidim", "~> 0.27"
 gem "decidim-budget_category_voting", path: "."
 
@@ -15,6 +13,7 @@ group :development, :test do
   gem "decidim-dev", "~> 0.27"
   gem "faker"
   gem "rubocop-performance"
+  gem "rubocop-rspec"
   gem "simplecov", require: false
 end
 
