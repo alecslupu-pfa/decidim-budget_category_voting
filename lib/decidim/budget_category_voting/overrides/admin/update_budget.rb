@@ -12,7 +12,7 @@ module Decidim
               weight: form.weight,
               description: form.description,
               total_budget: form.total_budget,
-              category_budget_rules: form.category_budget_rules
+              category_budget_rules: fetch_category_budget_rules
             }
 
             Decidim.traceability.update!(
@@ -21,6 +21,12 @@ module Decidim
               attributes,
               visibility: "all"
             )
+          end
+
+
+          private
+          def fetch_category_budget_rules
+            form.category_budget_rules.reject(&:deleted).collect(&:attributes)
           end
         end
       end
