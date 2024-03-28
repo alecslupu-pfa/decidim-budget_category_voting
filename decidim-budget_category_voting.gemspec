@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "decidim-admin", Decidim::BudgetCategoryVoting.version
   s.add_dependency "decidim-budgets", Decidim::BudgetCategoryVoting.version
+  s.add_dependency "decidim-category_enhanced", "~> 0.27"
   s.add_dependency "decidim-core", Decidim::BudgetCategoryVoting.version
   s.add_dependency "deface", ">= 1.9"
 

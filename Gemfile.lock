@@ -4,6 +4,7 @@ PATH
     decidim-budget_category_voting (0.27.5)
       decidim-admin (= 0.27.5)
       decidim-budgets (= 0.27.5)
+      decidim-category_enhanced (~> 0.27)
       decidim-core (= 0.27.5)
       deface (>= 1.9)
 
@@ -205,6 +206,10 @@ GEM
     decidim-budgets (0.27.5)
       decidim-comments (= 0.27.5)
       decidim-core (= 0.27.5)
+    decidim-category_enhanced (0.27.5)
+      decidim-admin (= 0.27.5)
+      decidim-core (= 0.27.5)
+      deface (>= 1.9)
     decidim-comments (0.27.5)
       decidim-core (= 0.27.5)
       redcarpet (~> 3.5, >= 3.5.1)
@@ -836,10 +841,10 @@ DEPENDENCIES
   listen (~> 3.1)
   rubocop-faker
   rubocop-performance
+  rubocop-rspec
   simplecov
   spring (~> 2.0)
   spring-watcher-listen (~> 2.0)
-  uri (= 0.10.1)
   web-console (~> 3.5)
 
 RUBY VERSION
