@@ -6,7 +6,12 @@ fr:
         budget:
           attributes:
             category_budget_rules:
+              duplicate: Duplicate category set within rules. Please review.
               invalid: Règles de budget par catégorie non valides. Veuillez revoir les configurations.
+        category_budget_rule:
+          attributes:
+            decidim_category_id:
+              duplicate: There is already another rule for this category.
         form:
           attributes:
             category_budget_rules:
