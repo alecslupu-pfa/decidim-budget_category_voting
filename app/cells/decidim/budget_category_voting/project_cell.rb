@@ -4,13 +4,6 @@ module Decidim
   module BudgetCategoryVoting
     class ProjectCell < OrderCategoryCell
       delegate :maximum_projects, :minimum_projects, :total, :order, to: :model
-      def caption
-        if minimum_projects > total
-          t("rule.required_votes")
-        else
-          t("rule.available_votes")
-        end
-      end
 
       def current_rule_explanation
         if minimum_projects.positive? && total < maximum_projects
@@ -24,12 +17,12 @@ module Decidim
         end
       end
 
-      def remaining_votes
-        return minimum_projects if total.zero?
-        return minimum_projects - total if minimum_projects > total
-        return maximum_projects - total if maximum_projects.positive? && total < maximum_projects
-
-        order.available_allocation - order.total
+      def inline_criteria
+        if minimum_projects.positive? && total < maximum_projects
+          t("projects_rule.inline_criteria_html", minimum_number: minimum_projects, maximum_number: maximum_projects)
+        else
+          t("projects_rule_maximum_only.inline_criteria_html", maximum_number: maximum_projects)
+        end
       end
     end
   end
