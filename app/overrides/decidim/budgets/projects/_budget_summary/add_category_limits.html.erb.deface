@@ -1,6 +1,6 @@
 <!-- insert_before 'div.budget-summary__total' -->
 <div class="category-votes-summary" data-progress-reference data-safe-url="<%= budget_url(budget) %>">
-  <div class="row small-up-1 medium-up-4 card-grid">
+  <div class="row small-up-1 smallmedium-up-2 mediumlarge-up-3 large-up-4 card-grid budget-category-voting">
     <% current_order.categories.each do |category| %>
       <%= cell category.card_class, category %>
     <% end %>

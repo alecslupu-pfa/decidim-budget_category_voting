@@ -1,1 +1,41 @@
 /* css for decidim_budget_category_voting */
+
+.budget-category-voting {
+  .category_name {
+    font-weight: normal;
+    text-decoration: underline;
+    padding-bottom: 1rem;
+    text-underline-offset: 5px;
+  }
+
+  .assigned {
+    font-weight: 600;
+  }
+
+  .criteria-not-met {
+    svg {
+      fill: #cb3c29;
+    }
+  }
+
+  .criteria-met {
+    svg {
+      fill: #57d685;
+    }
+  }
+
+  .criteria-inline {
+    font-size: 0.875rem;
+  }
+
+  .criteria-not-met,
+  .criteria-met {
+    font-weight: 600;
+    margin-bottom: 0;
+    font-style: italic;
+
+    svg {
+      margin-left: 5px;
+    }
+  }
+}

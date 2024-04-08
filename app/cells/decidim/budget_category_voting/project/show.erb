@@ -2,7 +2,7 @@
   <div class="card" style="<%= available_styles %>">
     <div class="card__content">
       <h3 class="heading4 text-center category_name"><%= category_name %></h3>
-      <h4 class="heading5 text-center assigned"> <%= t(".assigned", total: budget_to_currency(total)) %></h4>
+      <h4 class="heading5 text-center assigned"> <%= t(".assigned", total: total) %></h4>
 
       <p class="text-center criteria-inline"><%= inline_criteria %></p>
       <% if model.can_checkout? %>

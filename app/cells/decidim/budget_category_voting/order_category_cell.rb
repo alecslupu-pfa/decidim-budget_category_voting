@@ -3,6 +3,8 @@
 module Decidim
   module BudgetCategoryVoting
     class OrderCategoryCell < Decidim::ViewModel
+      include Decidim::IconHelper
+
       def show
         render if model.present?
       end
@@ -16,10 +18,6 @@ module Decidim
       end
 
       def category_name = translated_attribute(category.name)
-
-      def caption
-        raise NotImplementedError
-      end
 
       def popup_title
         t("projects_excess.title_html")
@@ -36,8 +34,6 @@ module Decidim
           # allocation: model.total_allocation,
         }
       end
-
-      #      def total_allocation = current_order.total
 
       private
 
