@@ -6,14 +6,23 @@ locales: [en]
 ignore_unused:
   - "decidim.components.budget_category_voting.name"
 
-ignore_missing:
-  - rule.*
-  - projects_rule.*
-  - minimum_projects_rule.*
-  - projects_excess.*
-  - vote_threshold_percent_rule.*
-  - projects_rule_maximum_only.*
-  - decidim.budgets.projects.budget_excess.close
-  - decidim.budgets.projects.budget_excess.ok
-  - decidim.budgets.projects.budget_summary.rules.title
+search:
+  relative_roots:
+    - app/controllers
+    - app/helpers
+    - app/mailers
+    - app/presenters
+    - app/views
+    - app/cells
 
+ignore_missing:
+  - "minimum_projects_rule.*"
+  - "projects_excess.*"
+  - "vote_threshold_percent_rule.*"
+  - "projects_rule.*"
+  - "projects_rule_maximum_only.*"
+  - "decidim.budgets.projects.budget_excess.*"
+  - "decidim.budgets.projects.budget_summary.*"
+  - "decidim.budget_category_voting.minimum_project.show.*"
+  - "decidim.budget_category_voting.order_category.show.*"
+  - "decidim.budget_category_voting.project.show.*"
