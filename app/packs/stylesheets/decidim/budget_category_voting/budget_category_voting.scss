@@ -6,10 +6,16 @@
     text-decoration: underline;
     padding-bottom: 1rem;
     text-underline-offset: 5px;
+    @include breakpoint(small down){
+      font-size: 1.125em;
+    }
   }
 
   .assigned {
     font-weight: 600;
+    @include breakpoint(small down){
+      font-size: 1em;
+    }
   }
 
   .criteria-not-met {
