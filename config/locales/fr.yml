@@ -30,6 +30,7 @@ fr:
         form:
           add: Ajouter
           category_budget_rules: Règles budgétaires de la catégorie
+      assigned: Assigned %{total}
       budget_excess:
         budget_excess:
           description_html: Ce projet dépasse le budget maximum et ne peut pas être ajouté. Si vous le souhaitez, vous pouvez supprimer un projet que vous avez déjà sélectionné puis voter de nouveau selon vos préférences.
@@ -37,14 +38,19 @@ fr:
         projects_excess:
           description_html: Ce projet dépasse le nombre maximum de projets et ne peut pas être ajouté. Si vous le souhaitez, vous pouvez supprimer un projet que vous avez déjà sélectionné puis voter de nouveau selon vos préférences.
           title_html: Budget maximal dépassé pour la catégorie <strong>%{category}</strong>
+      criteria_met: Criteria met
+      criteria_not_met: Criteria not met
       minimum_projects_rule:
         description_html: Pour quels projets de la catégorie <strong>%{category}</strong> pensez-vous que nous devrions allouer le budget ? Sélectionnez au moins %{minimum_number} projets que vous souhaitez et votez en fonction de vos préférences pour définir le budget.
+        inline_criteria_html: Minimum %{minimum_number}
         instruction_html: "<li>Sélectionnez au moins %{minimum_number} projets appartenant à la catégorie <strong>%{category}</strong></li>"
       projects_rule:
         description_html: Pour quels projets de la catégorie <strong>%{category}</strong> pensez-vous que nous devrions allouer le budget ? Sélectionnez au moins %{minimum_number} projets que vous souhaitez et votez en fonction de vos préférences pour définir le budget.
+        inline_criteria_html: Minimum %{minimum_number} and maximum %{maximum_number}
         instruction_html: "<li>Sélectionnez au moins %{minimum_number} et au plus %{maximum_number} projets appartenant à la catégorie <strong>%{category}</strong></li>"
       projects_rule_maximum_only:
         description_html: Pour quels projets de la catégorie <strong>%{category}</strong> pensez-vous que nous devrions allouer le budget ? Sélectionnez au moins %{maximum_number} projets que vous souhaitez et votez en fonction de vos préférences pour définir le budget.
+        inline_criteria_html: Maximum %{maximum_number}
         instruction_html: "<li>Sélectionnez au plus %{maximum_number} projets appartenant à la catégorie <strong>%{category}</strong></li>"
       rule:
         available_votes: Votes qui peuvent être assignés
@@ -53,6 +59,7 @@ fr:
         required_votes: Votes requis
       vote_threshold_percent_rule:
         description_html: Pour quels projets de la catégorie <strong>%{category}</strong> pensez-vous que nous devrions allouer le budget ? Sélectionnez au moins %{minimum_budget} projets que vous souhaitez et votez en fonction de vos préférences pour définir le budget.
+        inline_criteria_html: Minimum %{minimum_budget}
         instruction_html: "<li>Sélectionnez au moins %{minimum_budget} projets appartenant à la catégorie <strong>%{category}</strong></li>"
     components:
       budget_category_voting:
