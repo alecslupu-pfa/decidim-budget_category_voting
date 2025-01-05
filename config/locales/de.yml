@@ -6,17 +6,17 @@ de:
         budget:
           attributes:
             category_budget_rules:
-              duplicate: Duplicate category set within rules. Please review.
-              invalid: Invalid category budget rules. Please review the rules.
+              duplicate: Kategorie innerhalb der Regeln duplizieren. Bitte überprüfen.
+              invalid: Ungültige Budgetregeln für die Kategorie. Bitte überprüfen Sie die Regeln.
         category_budget_rule:
           attributes:
             decidim_category_id:
-              duplicate: There is already another rule for this category.
+              duplicate: Es gibt bereits eine andere Regel für diese Kategorie.
         form:
           attributes:
             category_budget_rules:
-              minimum_budget_projects_number_too_high: The minimum number of projects is too high.
-              minimum_budget_projects_number_too_low: The minimum number of projects is too low.
+              minimum_budget_projects_number_too_high: Die Mindestanzahl an Projekten ist zu hoch.
+              minimum_budget_projects_number_too_low: Die Mindestanzahl an Projekten ist zu niedrig.
               percent_number_too_high: The computed percentage is too high.
               percent_number_too_low: The percentage is too low.
   decidim:
