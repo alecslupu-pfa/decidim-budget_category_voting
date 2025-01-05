@@ -1,0 +1,66 @@
+---
+de:
+  activemodel:
+    errors:
+      models:
+        budget:
+          attributes:
+            category_budget_rules:
+              duplicate: Kategorie innerhalb der Regeln duplizieren. Bitte überprüfen.
+              invalid: Ungültige Budgetregeln für die Kategorie. Bitte überprüfen Sie die Regeln.
+        category_budget_rule:
+          attributes:
+            decidim_category_id:
+              duplicate: Es gibt bereits eine andere Regel für diese Kategorie.
+        form:
+          attributes:
+            category_budget_rules:
+              minimum_budget_projects_number_too_high: Die Mindestanzahl an Projekten ist zu hoch.
+              minimum_budget_projects_number_too_low: Die Mindestanzahl an Projekten ist zu niedrig.
+              percent_number_too_high: Der berechnete Prozentsatz ist zu hoch.
+              percent_number_too_low: Der Prozentsatz ist zu niedrig.
+  decidim:
+    budget_category_voting:
+      admin:
+        category_budget_rule_fields:
+          category: Kategorie
+          down: Nach unten
+          remove: Entfernen
+          up: Nach oben
+        form:
+          add: Hinzufügen
+          category_budget_rules: Budgetregeln für Kategorien
+      assigned: Zugeordnet %{total}
+      budget_excess:
+        budget_excess:
+          description_html: Dieses Projekt überschreitet das maximale Budget und kann nicht hinzugefügt werden. Wenn Sie möchten, können Sie ein bereits ausgewähltes Projekt löschen, um erneut gemäß Ihren Präferenzen abzustimmen.
+          title_html: Maximales Budget für <strong>%{category}</strong> überschritten
+        projects_excess:
+          description_html: Dieses Projekt überschreitet das maximale Budget und kann nicht hinzugefügt werden. Wenn Sie möchten, können Sie ein bereits ausgewähltes Projekt löschen, um erneut gemäß Ihren Präferenzen abzustimmen.
+          title_html: Maximale Anzahl an Projekten für <strong>%{category}</strong> überschritten
+      criteria_met: Kriterien erfüllt
+      criteria_not_met: Kriterien nicht erfüllt
+      minimum_projects_rule:
+        description_html: Welche Projekte aus der Kategorie <strong>%{category}</strong> sollten Ihrer Meinung nach finanziert werden? Wählen Sie mindestens %{minimum_number} Projekte aus und stimmen Sie gemäß Ihren Präferenzen über das Budget ab.
+        inline_criteria_html: Minimum %{minimum_number}
+        instruction_html: "<li>Wählen Sie mindestens %{minimum_number} Projekte aus der Kategorie <strong>%{category}</strong> aus und stimmen Sie gemäß Ihren Präferenzen über das Budget ab.</li>"
+      projects_rule:
+        description_html: Welche Projekte aus der Kategorie <strong>%{category}</strong> sollten Ihrer Meinung nach finanziert werden? Wählen Sie mindestens %{minimum_number} und höchstens %{maximum_number} Projekte aus und stimmen Sie gemäß Ihren Präferenzen über das Budget ab.
+        inline_criteria_html: Minimum %{minimum_number} und Maximum %{maximum_number}
+        instruction_html: "<li>Wählen Sie mindestens %{minimum_number} und höchstens %{maximum_number} Projekte aus der Kategorie <strong>%{category}</strong> aus und stimmen Sie gemäß Ihren Präferenzen über das Budget ab.</li>"
+      projects_rule_maximum_only:
+        description_html: Welche Projekte aus der Kategorie <strong>%{category}</strong> sollten Ihrer Meinung nach finanziert werden? Wählen Sie bis zu %{maximum_number} Projekte aus und stimmen Sie gemäß Ihren Präferenzen über das Budget ab.
+        inline_criteria_html: Maximum %{maximum_number}
+        instruction_html: "<li>Wählen Sie bis zu %{maximum_number} Projekte aus der Kategorie <strong>%{category}</strong> aus und stimmen Sie gemäß Ihren Präferenzen über das Budget ab.</li>"
+      rule:
+        available_votes: Zuordnungsfähige Stimmen
+        remaining_budget: Verbleibendes Budget
+        remaining_votes: Erforderliche Abstimmungen
+        required_votes: Für die Zuweisung erforderliche Abstimmungen
+      vote_threshold_percent_rule:
+        description_html: Welche Projekte aus der Kategorie <strong>%{category}</strong> sollten Ihrer Meinung nach finanziert werden? Weisen Sie mindestens %{minimum_budget} den gewünschten Projekten zu und stimmen Sie gemäß Ihren Präferenzen über das Budget ab.
+        inline_criteria_html: Minimum %{minimum_budget}
+        instruction_html: "<li>Weisen Sie mindestens %{minimum_budget} den Projekten aus der Kategorie <strong>%{category}</strong> zu und stimmen Sie gemäß Ihren Präferenzen über das Budget ab.</li>"
+    components:
+      budget_category_voting:
+        name: Budget-Kategorie Abstimmung
